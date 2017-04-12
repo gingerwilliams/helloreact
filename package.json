@@ -1,0 +1,20 @@
+{
+  "name": "helloreact",
+  "version": "1.0.0",
+  "description": "react hello world",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gingerwilliams/helloreact.git"
+  },
+  "author": "Ginger Williams",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-sass": "^2.3.1"
+  }
+}
