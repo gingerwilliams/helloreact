@@ -14,17 +14,27 @@
 	<div id="container"></div>
 
 	<script type="text/babel">
-		var Greeting = React.createClass({
+		var App = React.createClass({
+			getInitialState: function(){
+				return {date: new Date()}
+			},
+
 			render: function(){
 				return(
-					<div><h1>Hello React</h1></div>
-				)
-			}
+					<div>
+						<h1>Hello React</h1>
+						<div>{this.state.date.toLocaleTimeString()}</div>
+					</div>
+				);
+			},
+
+			
 		});
 
+		
 		ReactDOM.render(
-			<Greeting />,
-			document.getElementById('container')
+			<App />
+			,document.getElementById('container')
 		);
 	</script>
 	

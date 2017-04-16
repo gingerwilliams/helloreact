@@ -11,22 +11,25 @@
     <script src="js/browser.min.js"></script>
 </head>
 <body>
-	<div id="container"></div>
+<div id="container"></div>
+<script type="text/babel">
+	//Component
+	var App = React.createClass({
+		render: function(){
+			return(
+				<div>
+					<h1>{this.props.title}</h1>
+					<p>{this.props.subtitle}</p>
+				</div>
+			)
+		},
+	});
+		
+	ReactDOM.render(
+		<App title="Welcome To React" subtitle="A beginners guid to React"/>,
+		document.getElementById('container')
+	);
 
-	<script type="text/babel">
-		var Greeting = React.createClass({
-			render: function(){
-				return(
-					<div><h1>Hello React</h1></div>
-				)
-			}
-		});
-
-		ReactDOM.render(
-			<Greeting />,
-			document.getElementById('container')
-		);
-	</script>
-	
+</script>
 </body>
 </html>
