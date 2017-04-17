@@ -15,25 +15,25 @@
 
 <script type="text/babel">
 	var App = React.createClass({
-		getInitialState: function(){
+		getInitialState(){
 			return{
 				click: 0
 			}
 		},
 
-		onClickPlus: function(evt){
+		onClickPlus(evt){
 			this.setState({
 				click: this.state.click + 1
 			})
 		},
 
-		onClickMinus: function(evt){
+		onClickMinus(evt){
 			this.setState({
 				click: this.state.click - 1
 			})
 		},
 
-		render: function(){
+		render(){
 		  return(
 				<div>
 					<h1>Hello React</h1>
