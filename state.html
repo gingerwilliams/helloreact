@@ -11,32 +11,46 @@
     <script src="js/browser.min.js"></script>
 </head>
 <body>
-	<div id="container"></div>
+<div id="container"></div>
 
-	<script type="text/babel">
-		var App = React.createClass({
-			getInitialState: function(){
-				return {date: new Date()}
-			},
+<script type="text/babel">
+	var App = React.createClass({
+		getInitialState: function(){
+			return{
+				click: 0
+			}
+		},
 
-			render: function(){
-				return(
-					<div>
-						<h1>Hello React</h1>
-						<div>{this.state.date.toLocaleTimeString()}</div>
-					</div>
-				);
-			},
+		onClickPlus: function(evt){
+			this.setState({
+				click: this.state.click + 1
+			})
+		},
 
-			
-		});
+		onClickMinus: function(evt){
+			this.setState({
+				click: this.state.click - 1
+			})
+		},
 
-		
-		ReactDOM.render(
-			<App />
-			,document.getElementById('container')
-		);
-	</script>
+		render: function(){
+		  return(
+				<div>
+					<h1>Hello React</h1>
+					<div>{this.state.click}</div>
+					<button onClick={this.onClickMinus}>Minus</button>
+					<button onClick={this.onClickPlus}>Plus</button>
+				</div>
+		  );
+		}
+	});
+
+	ReactDOM.render(
+		<App />,
+		document.getElementById('container')
+	);
+
+</script>
 	
 </body>
 </html>
