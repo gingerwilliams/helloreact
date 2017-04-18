@@ -18,7 +18,21 @@
 			
 			addtask(e){
 				e.preventDefault();
-				console.log('new task')
+
+				var ul = document.getElementById('taskList');
+				var li = document.createElement('li');
+				var ck = document.createElement('input');
+				ck.type = "checkbox";
+
+				var task = document.createTextNode("New Task");
+
+				
+				
+				ul.appendChild(li); 
+				li.appendChild(ck);
+				li.appendChild(task);
+
+			
 			},
 
 			render(){
@@ -30,15 +44,7 @@
 								<button onClick={this.addtask}>Add New Task</button>
 								
 								<ul id="taskList">
-									<li>
-										<input type="checkbox" />
-										<label className="task">Your first task</label>
-									</li>
-
-									<li>
-										<input type="checkbox" />
-										<label className="task">Your second task</label>
-									</li>
+									
 
 								</ul>
 
