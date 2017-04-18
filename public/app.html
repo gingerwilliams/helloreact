@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Template</title>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+
+	<script type="text/babel">
+		var App = React.createClass({
+			
+			addtask(e){
+				e.preventDefault();
+				console.log('new task')
+			},
+
+			render(){
+				return(
+					<div className="main">
+						<h1 className="header">React ToDo App</h1>
+						<div className="">
+							<form>
+								<button onClick={this.addtask}>Add New Task</button>
+								
+								<ul id="taskList">
+									<li>
+										<input type="checkbox" />
+										<label className="task">Your first task</label>
+									</li>
+
+									<li>
+										<input type="checkbox" />
+										<label className="task">Your second task</label>
+									</li>
+
+								</ul>
+
+							</form>
+						</div>
+					</div>
+				)
+			}
+		});
+
+		ReactDOM.render(
+			<App />,
+			document.getElementById('container')
+		);
+	</script>
+	
+</body>
+</html>

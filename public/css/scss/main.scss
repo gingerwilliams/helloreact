@@ -1,0 +1,17 @@
+@import "reset";
+@import "grid";
+
+#container {
+	margin: 10px;
+
+	
+	li{
+		list-style:none;
+	}
+	.task{
+		&.complete{
+			text-decoration: line-through;
+		}
+	}
+
+}
