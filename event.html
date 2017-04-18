@@ -14,36 +14,26 @@
 <div id="container"></div>
 
 <script type="text/babel">
-	
 	var App = React.createClass({
-		getInitialState(){
-			return{
-				clicks: 0
-			}
-		},
-		
-		mounted(){
-			this.setState({
-				clicks: this.state.clicks + 1
-			});
+
+		helloReact(){
+			console.log('Welcome To React')
 		},
 
 		render(){
 			return(
 				<div>
 					<h1>Hello React</h1>
-					<div>{this.state.clicks}</div>
-					<button onClick={this.mounted}>Plus</button>
+					<button onClick={this.helloReact}>Click Me</button>
 				</div>
 			)
 		}
 	});
-		
+	
 	ReactDOM.render(
 		<App />,
 		document.getElementById('container')
-	);	
-
+	);
 </script>
 	
 </body>
