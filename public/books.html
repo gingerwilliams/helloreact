@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Template</title>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+	<div id="container"></div>
+
+	<script type="text/babel">
+		var App = React.createClass({
+
+			render(){
+				return(
+					<div>
+						<h1>React Book List</h1>
+
+						<section>
+							<form>
+								<input ref="inputBook" placeholder="Enter Your Book" />
+								<input ref="inputAuthor" placeholder="Enter Book Author" />
+								<button>Add To List</button>
+							</form>
+						</section>
+
+						<section>
+							<header>
+								<h2>Reading List</h2>
+							</header>
+							<article>
+								<ul>
+									<li>
+										<input type="checkbox" />
+										<p>JavaScript: The Good Parts</p>
+										<p>Douglas Crockford</p>
+										<button>delete</button>
+									</li>
+
+									<li>
+										<input type="checkbox" />
+										<p>Elequent Javascript</p>
+										<p>Marijn Haverbeke</p>
+										<button>delete</button>
+									</li>
+
+								</ul>
+							</article>
+						</section>
+
+					</div>
+				)
+			}
+		});
+
+		ReactDOM.render(
+			<App />, 
+			document.getElementById('container')
+		);
+		
+	</script>
+	
+</body>
+</html>
