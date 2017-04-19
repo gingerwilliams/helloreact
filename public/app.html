@@ -9,29 +9,48 @@
     <script src="js/react.min.js"></script>
     <script src="js/react-dom.min.js"></script>
     <script src="js/browser.min.js"></script>
+    <script> 
+			// var ul = document.getElementById('taskList');
+			// var li = document.createElement('li');
+			// var ck = document.createElement('input');
+			// ck.type = "checkbox";
+
+			// var task = document.createTextNode("New Task");
+
+			
+			
+			// ul.appendChild(li); 
+			// li.appendChild(ck);
+			// li.appendChild(task); 
+		</script>
 </head>
 <body>
+
 	<div id="container"></div>
 
 	<script type="text/babel">
 		var App = React.createClass({
+			getInitialState(){
+				return{
+					arr: [ 
+						
+					]
+				}
+			},
 			
 			addtask(e){
 				e.preventDefault();
+				console.log(this.refs.inputTask.value);
 
-				var ul = document.getElementById('taskList');
-				var li = document.createElement('li');
-				var ck = document.createElement('input');
-				ck.type = "checkbox";
+				var tasksArray = this.state.arr.slice();
 
-				var task = document.createTextNode("New Task");
+				tasksArray.push(
+						this.refs.inputTask.value
+				);
 
-				
-				
-				ul.appendChild(li); 
-				li.appendChild(ck);
-				li.appendChild(task);
-
+				this.setState({
+						arr: tasksArray
+				});
 			
 			},
 
@@ -41,11 +60,18 @@
 						<h1 className="header">React ToDo App</h1>
 						<div className="">
 							<form>
+								<input ref="inputTask" placeholder="Enter Task" />
 								<button onClick={this.addtask}>Add New Task</button>
 								
 								<ul id="taskList">
 									
-
+									{
+									
+										this.state.arr.map(function(text, i){
+												return(<li key={i}>{text}</li>);
+										})
+									}
+									
 								</ul>
 
 							</form>
