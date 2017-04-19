@@ -17,6 +17,20 @@
 
 	<script type="text/babel">
 		var App = React.createClass({
+			getInitialState(){
+				return{
+					books: [
+						
+						{
+						title: "JavaScript: The Good Parts", 
+						author: "Douglas Crockford"
+						},{
+						title: "Eloquent JavaScript: A Modern Introduction to Programming",
+						author: "Marijn Haverbeke"
+						}
+					]
+				}
+			},
 
 			render(){
 				return(
@@ -36,21 +50,20 @@
 								<h2>Reading List</h2>
 							</header>
 							<article>
-								<ul>
-									<li>
-										<input type="checkbox" />
-										<p>JavaScript: The Good Parts</p>
-										<p>Douglas Crockford</p>
-										<button>delete</button>
-									</li>
+								<ul>{
 
-									<li>
-										<input type="checkbox" />
-										<p>Elequent Javascript</p>
-										<p>Marijn Haverbeke</p>
-										<button>delete</button>
-									</li>
+									this.state.books.map(function(text, i){
+										return(
+											<li key={i}>
+												<input type="checkbox" />
+												<p>{text.title}</p>
+												<p>{text.author}</p>
+												<button>delete</button>
+											</li>
+										)
+									})
 
+								}
 								</ul>
 							</article>
 						</section>
