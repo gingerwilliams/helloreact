@@ -40,7 +40,6 @@
 			
 			addtask(e){
 				e.preventDefault();
-				console.log(this.refs.inputTask.value);
 
 				var tasksArray = this.state.arr.slice();
 
@@ -54,6 +53,7 @@
 			
 			},
 
+
 			render(){
 				return(
 					<div className="main">
@@ -63,15 +63,18 @@
 								<input ref="inputTask" placeholder="Enter Task" />
 								<button onClick={this.addtask}>Add New Task</button>
 								
-								<ul id="taskList">
-									
-									{
+								<ul id="taskList">{
 									
 										this.state.arr.map(function(text, i){
-												return(<li key={i}>{text}</li>);
+												return(
+													<li key={i}>
+															<input type="checkbox" />
+															<label>{text}</label>
+													</li>
+												);
 										})
+
 									}
-									
 								</ul>
 
 							</form>
