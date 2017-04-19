@@ -52,10 +52,28 @@
 				this.setState({
 					books: booklist
 				});
-
-
-
 				
+			},
+
+			unmountBook(i){
+				var booklist = this.state.books
+
+				booklist.splice(i, 1);
+
+				this.setState({
+					books: booklist
+				});
+			},
+
+			eachBook(text, i){
+				return(
+					<li key={i}>
+						<input type="checkbox" />
+						<p>{text.title}</p>
+						<p>{text.author}</p>
+						<button onClick={this.unmountBook}>delete</button>
+					</li>
+				)
 			},
 
 			render(){
@@ -76,18 +94,10 @@
 								<h2>Reading List</h2>
 							</header>
 							<article>
-								<ul>{
+								<ul>
+								{
 
-									this.state.books.map(function(text, i){
-										return(
-											<li key={i}>
-												<input type="checkbox" />
-												<p>{text.title}</p>
-												<p>{text.author}</p>
-												<button>delete</button>
-											</li>
-										)
-									})
+									this.state.books.map(this.eachBook)
 
 								}
 								</ul>
