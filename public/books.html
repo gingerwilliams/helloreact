@@ -32,6 +32,32 @@
 				}
 			},
 
+			mountBook(e){
+				e.preventDefault();
+				
+				var book = this.refs.inputBook.value
+				var author = this.refs.inputAuthor.value
+
+				console.log(book +  " " + author)
+
+				var booklist = this.state.books
+
+				booklist.push(
+					{
+						title: book,
+						author: author
+					}
+				);
+
+				this.setState({
+					books: booklist
+				});
+
+
+
+				
+			},
+
 			render(){
 				return(
 					<div>
@@ -41,7 +67,7 @@
 							<form>
 								<input ref="inputBook" placeholder="Enter Your Book" />
 								<input ref="inputAuthor" placeholder="Enter Book Author" />
-								<button>Add To List</button>
+								<button onClick={this.mountBook}>Add To List</button>
 							</form>
 						</section>
 
