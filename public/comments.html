@@ -12,6 +12,53 @@
 </head>
 <body>
 <div id="container"></div>
+<script type="text/babel">
 
+	var App = React.createClass({
+		getInitialState(){
+			return{
+				comments: [
+					"Occupy irony crucifix food truck pitchfork."
+				]
+			}
+		},
+		
+		render(){
+			return(
+				<div>
+					<header>
+						<h1>React Comment Component</h1>
+					</header>
+					
+					<section>
+						<h1>Submit Your Comments</h1>
+						<form>
+							<input ref="inputName" type="textbox" placeholder="your name..." />
+							<input ref="inputComment" type="textbox" placeholder="message..." />
+							<button>submit</button>
+						</form>
+					</section>
+
+					<section>
+						<article className="commentWrapper">
+							<p>Ginger Williams:</p>
+							<p>{this.state.comments}</p>
+							<button>edit</button>
+							<button>delete</button>
+						</article>
+
+					</section>
+
+				</div>
+			)
+		}
+
+	});
+	
+	ReactDOM.render(
+		<App />,
+		document.getElementById('container')
+	);
+</script>
 </body>
 </html>
