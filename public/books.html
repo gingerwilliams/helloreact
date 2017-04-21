@@ -27,6 +27,9 @@
 						},{
 						title: "Eloquent JavaScript: A Modern Introduction to Programming",
 						author: "Marijn Haverbeke"
+						},{
+						title: "Beginners Javascript: The Fifth Edition",
+						author: "Paul Wilton"
 						}
 					]
 				}
@@ -42,12 +45,10 @@
 
 				var booklist = this.state.books
 
-				booklist.push(
-					{
+				booklist.push({
 						title: book,
 						author: author
-					}
-				);
+				});
 
 				this.setState({
 					books: booklist
@@ -67,7 +68,7 @@
 
 			eachBook(text, i){
 				return(
-					<li key={i}>
+					<li key={i} index={i}>
 						<input type="checkbox" />
 						<p>{text.title}</p>
 						<p>{text.author}</p>

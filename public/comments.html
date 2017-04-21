@@ -18,10 +18,60 @@
 		getInitialState(){
 			return{
 				comments: [
-					"Occupy irony crucifix food truck pitchfork."
+					{			
+						name: "Ginger Williams",
+						message: "Occupy irony crucifix food truck pitchfork."
+					},{
+						name: "Nickole Bonner",
+						message: "Pour-over edison bulb beard cardigan pok pok."
+					}
 				]
 			}
 		},
+
+		mountNewComment(e){
+			e.preventDefault()
+			var name = this.refs.inputName.value;
+			var message = this.refs.inputMessage.value;
+
+			console.log(name + ' ' + message)
+
+			var newComment = this.state.comments
+
+			newComment.push({
+				name: name,
+				message: message
+			});
+
+			this.setState({
+				comments: newComment
+			})
+		},
+
+		unmountComment(i){
+			var removeComment = this.state.comments
+
+			removeComment.splice(i, 1);
+
+			this.setState({
+				comments: removeComment
+			});
+
+		},
+
+
+		eachComment(item, i){
+			return(
+				<article key={i} className="commentWrapper">
+					<p>{item.name}:</p>
+					<p>{item.message}</p>
+					<button>edit</button>
+					<button onClick={this.unmountComment}>delete</button>
+				</article>
+			);
+		},
+
+
 		
 		render(){
 			return(
@@ -34,19 +84,15 @@
 						<h1>Submit Your Comments</h1>
 						<form>
 							<input ref="inputName" type="textbox" placeholder="your name..." />
-							<input ref="inputComment" type="textbox" placeholder="message..." />
-							<button>submit</button>
+							<input ref="inputMessage" type="textbox" placeholder="message..." />
+							<button onClick={this.mountNewComment}>submit</button>
 						</form>
 					</section>
 
 					<section>
-						<article className="commentWrapper">
-							<p>Ginger Williams:</p>
-							<p>{this.state.comments}</p>
-							<button>edit</button>
-							<button>delete</button>
-						</article>
-
+					{
+						this.state.comments.map(this.eachComment)
+					}
 					</section>
 
 				</div>
