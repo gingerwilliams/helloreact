@@ -56,13 +56,13 @@
 				
 			},
 
-			unmountBook(i){
-				var booklist = this.state.books
+			unmountBook(e, i){
+				var newBooklist = this.state.books.slice()
 
-				booklist.splice(i, 1);
+				newBooklist.splice(i, 1);
 
 				this.setState({
-					books: booklist
+					books: newBooklist
 				});
 			},
 
@@ -72,7 +72,7 @@
 						<input type="checkbox" />
 						<p>{text.title}</p>
 						<p>{text.author}</p>
-						<button onClick={this.unmountBook}>delete</button>
+						<button onClick={e=>this.unmountBook(e,i)}>delete</button>
 					</li>
 				)
 			},
