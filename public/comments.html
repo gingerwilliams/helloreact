@@ -48,30 +48,42 @@
 			})
 		},
 
-		unmountComment(i){
-			var removeComment = this.state.comments
+		unmountComment(e, i){
+			var removeComment = this.state.comments.slice();
 
 			removeComment.splice(i, 1);
 
 			this.setState({
 				comments: removeComment
 			});
-
 		},
 
+		updateComment(){
+			console.log('updating comment');
+		},
 
 		eachComment(item, i){
 			return(
 				<article key={i} className="commentWrapper">
 					<p>{item.name}:</p>
 					<p>{item.message}</p>
-					<button>edit</button>
-					<button onClick={this.unmountComment}>delete</button>
-				</article>
+					<button onClick={this.updateComment}>edit</button>
+					<button onClick={e=>this.unmountComment(e,i)}>delete</button>
+				</article> 
 			);
 		},
 
+		eachCommentForm(item, i){
+			return(
+				<article key={i} className="commentWrapper">
+					<input placeholder={item.name} />
+					<input placeholder={item.message} />
+					<button onClick={this.updateComment}>save</button>
+				</article> 
+			);
+		},
 
+		
 		
 		render(){
 			return(
@@ -87,9 +99,11 @@
 							<input ref="inputMessage" type="textbox" placeholder="message..." />
 							<button onClick={this.mountNewComment}>submit</button>
 						</form>
+						
 					</section>
 
 					<section>
+
 					{
 						this.state.comments.map(this.eachComment)
 					}
