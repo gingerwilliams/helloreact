@@ -14,6 +14,28 @@
 <div id="container"></div>
 <script type="text/babel">
 
+	var Form = React.createClass({
+		getInitialState(){
+			editing :false
+		},
+
+		edit(){
+			this.setState{(
+				editing: true;
+				console.log('edit');
+			)}
+		},
+
+		render(){
+			return(
+				<div>
+					{this.edit}
+				</div>
+			)
+		}
+		
+	});
+
 	var App = React.createClass({
 		getInitialState(){
 			return{
@@ -63,10 +85,23 @@
 				<article key={i} className="commentWrapper">
 					<p>{item.name}:</p>
 					<p>{item.message}</p>
+					<button onClick={this.updateComment}>edit</button>
 					<button onClick={e=>this.unmountComment(e,i)}>delete</button>
 				</article> 
 			);
 		},
+
+		eachCommentForm(item, i){
+			return(
+				<article key={i} className="commentWrapper">
+					<input placeholder={item.name} />
+					<input placeholder={item.message} />
+					<button onClick={this.updateComment}>save</button>
+				</article> 
+			);
+		},
+
+		
 		
 		render(){
 			return(
