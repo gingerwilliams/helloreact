@@ -15,126 +15,49 @@
 <script type="text/babel">
 
 	var Form = React.createClass({
-		getInitialState(){
-			editing :false
-		},
 
-		edit(){
-			this.setState{(
-				editing: true;
-				console.log('edit');
-			)}
-		},
-
-		render(){
-			return(
-				<div>
-					{this.edit}
-				</div>
-			)
-		}
-		
-	});
-
-	var App = React.createClass({
 		getInitialState(){
 			return{
-				comments: [
-					{			
-						name: "Ginger Williams",
-						message: "Occupy irony crucifix food truck pitchfork."
-					},{
-						name: "Nickole Bonner",
-						message: "Pour-over edison bulb beard cardigan pok pok."
-					}
-				]
+				editing: 0
 			}
 		},
 
-		mountNewComment(e){
-			e.preventDefault()
-			var name = this.refs.inputName.value;
-			var message = this.refs.inputMessage.value;
-
-			console.log(name + ' ' + message)
-
-			var newComment = this.state.comments
-
-			newComment.push({
-				name: name,
-				message: message
-			});
-
+		edit(){
+			console.log('editing');
 			this.setState({
-				comments: newComment
-			})
-		},
-
-		unmountComment(e, i){
-			var removeComment = this.state.comments.slice();
-
-			removeComment.splice(i, 1);
-
-			this.setState({
-				comments: removeComment
+				editing: 1
 			});
 		},
 
-		eachComment(item, i){
+		save(){
+			console.log('saving');
+			this.setState({
+				editing: 0
+			});
+		},
+
+		eachComment(){
 			return(
-				<article key={i} className="commentWrapper">
-					<p>{item.name}:</p>
-					<p>{item.message}</p>
-					<button onClick={this.updateComment}>edit</button>
-					<button onClick={e=>this.unmountComment(e,i)}>delete</button>
+				<article className="commentWrapper">
+					<p>Ginger Williams:</p>
+					<p>This is a comment</p>
+					<button onClick={this.edit}>edit</button>
+					<button onClick={this.save}>save</button>
+
+					
 				</article> 
 			);
 		},
-
-		eachCommentForm(item, i){
-			return(
-				<article key={i} className="commentWrapper">
-					<input placeholder={item.name} />
-					<input placeholder={item.message} />
-					<button onClick={this.updateComment}>save</button>
-				</article> 
-			);
-		},
-
-		
+				
 		
 		render(){
-			return(
-				<div>
-					<header>
-						<h1>React Comment Component</h1>
-					</header>
-					
-					<section>
-						<h1>Submit Your Comments</h1>
-						<form>
-							<input ref="inputName" type="textbox" placeholder="your name..." />
-							<input ref="inputMessage" type="textbox" placeholder="message..." />
-							<button onClick={this.mountNewComment}>submit</button>
-						</form>
-						
-					</section>
-
-					<section>
-
-					{
-						this.state.comments.map(this.eachComment)
-					}
-					</section>
-
-				</div>
-			)
+			return	this.eachComment();
 		}
-
 	});
+
 	
 	ReactDOM.render(
-		<App />,
+		<Form />,
 		document.getElementById('container')
 	);
 </script>
